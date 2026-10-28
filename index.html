@@ -168,20 +168,33 @@ h1,h2,h3{text-wrap:balance;letter-spacing:-.025em;line-height:1.05}
 .tile .ex{font-size:14px;color:#f5f5f7;border-top:1px solid var(--hair-d);padding-top:12px}
 
 /* team */
-.team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.member{background:var(--white);border-radius:28px;overflow:hidden;display:grid;min-width:0}
-.vid{position:relative;aspect-ratio:16/10;max-width:100%;background:#e8e8ed}
-.vid video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
-.vid .ph{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:12px;text-align:center;padding:16px;color:var(--gray)}
-.vid .face{width:72px;height:72px;border-radius:50%;background:#d2d2d7;color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:24px}
-.vid small{font-size:13px}
-.vid label{color:#0066cc;font-size:15px;cursor:pointer}
-.vid label:hover{text-decoration:underline}
-.vid input{position:absolute;width:1px;height:1px;opacity:0}
-.member .info{padding:24px 28px 30px;display:grid;gap:4px;color:var(--ink)}
-.member .role{font-size:14px;font-weight:600;color:var(--accent)}
-.member h3{font-size:26px;font-weight:700}
-.member p{color:var(--gray);font-size:16px;margin-top:4px}
+.stage-team{display:grid;grid-template-columns:minmax(0,560px) minmax(0,460px);gap:56px;align-items:center;justify-content:center}
+.player{position:relative;aspect-ratio:1;max-width:100%;border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 30px 60px rgba(0,0,0,.08)}
+.player video{width:100%;height:100%;object-fit:cover;display:block;background:#fff}
+.player .play{position:absolute;inset:0;display:grid;place-items:center;border:0;background:rgba(0,0,0,.06);cursor:pointer;transition:background .3s}
+.player .play:hover{background:rgba(0,0,0,.14)}
+.player .play span{width:84px;height:84px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;backdrop-filter:blur(10px)}
+.player .play svg{width:30px;margin-left:5px;fill:var(--ink)}
+.player .cap{position:absolute;left:0;right:0;bottom:0;padding:48px 24px 20px;background:linear-gradient(transparent,rgba(0,0,0,.6));color:#fff;pointer-events:none;transition:opacity .3s}
+.player .cap b{display:block;font-size:24px;letter-spacing:-.02em}
+.player .cap span{font-size:15px;opacity:.85}
+.player.playing .cap{opacity:0}
+.roster{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.roster button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;align-items:center;padding:12px;border-radius:18px;transition:background .25s}
+.roster button:hover{background:rgba(0,0,0,.04)}
+.roster button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.roster button[aria-current="true"]{background:var(--white);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.roster img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:50% 25%;background:#fff}
+.roster .nm{font-size:19px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.roster .pr{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.roster .pr a{font-size:13px;color:var(--gray);text-decoration:none;border:1px solid var(--hair);border-radius:980px;padding:2px 10px;background:var(--white)}
+.roster .pr a:hover{color:var(--accent);border-color:var(--accent)}
+.roster .bar{grid-column:2;height:3px;border-radius:2px;background:var(--hair);overflow:hidden;margin-top:6px}
+.roster .bar i{display:block;height:100%;width:0;background:var(--accent)}
+.byline{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:14px;font-weight:500;text-decoration:none}
+.byline img{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:50% 25%;background:#fff}
+.dark .byline{color:var(--gray-d)}.lite .byline{color:var(--gray)}
+.byline:hover{color:var(--accent)!important}
 
 footer{background:var(--light);color:var(--gray);font-size:12px;border-top:1px solid var(--hair)}
 footer .max{padding-block:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -200,7 +213,9 @@ footer .max{padding-block:20px;display:flex;justify-content:space-between;gap:12
   .meter{margin-top:8px}.meter .r{font-size:28px}
   .weights{grid-template-columns:repeat(2,1fr)}
   .bento{grid-template-columns:1fr}.tile.wide{grid-column:auto}.tile{min-height:0}
-  .team{grid-template-columns:1fr}
+  .stage-team{grid-template-columns:1fr;gap:24px}
+  .player{border-radius:20px}
+  .byline{margin-top:10px}
   .sec,.statement{padding-block:80px}
 }
 @media (max-height:640px) and (max-width:860px){ .steps li span{display:none} }
@@ -253,6 +268,7 @@ footer .max{padding-block:20px;display:flex;justify-content:space-between;gap:12
       <div class="copy">
         <p class="kicker">01 · Regra dos terços</p>
         <h2>Sai do centro.</h2>
+        <a class="byline" href="#equipa" data-member="miguel"></a>
         <ol class="steps">
           <li class="on"><b>Centrado</b><span>Sujeitos ao meio criam uma imagem estável, mas estática.</span></li>
           <li><b>Nove partes iguais</b><span>Duas linhas horizontais e duas verticais dividem o enquadramento.</span></li>
@@ -277,6 +293,7 @@ footer .max{padding-block:20px;display:flex;justify-content:space-between;gap:12
       <div class="copy">
         <p class="kicker">02 · Esquerda ou direita</p>
         <h2>Lemos em Z.</h2>
+        <a class="byline" href="#equipa" data-member="miguel"></a>
         <ol class="steps">
           <li class="on"><b>Entrada à esquerda</b><span>O olhar ocidental começa no canto superior esquerdo: o lugar da identidade.</span></li>
           <li><b>Atravessa para a direita</b><span>Segue pela navegação até ao outro lado.</span></li>
@@ -303,6 +320,7 @@ footer .max{padding-block:20px;display:flex;justify-content:space-between;gap:12
       <div class="copy">
         <p class="kicker">03 · Espaço negativo e positivo</p>
         <h2>O vazio também comunica.</h2>
+        <a class="byline" href="#equipa" data-member="guilherme"></a>
         <ol class="steps">
           <li class="on"><b>Tudo a competir</b><span>Sem espaço livre, cada elemento grita e nenhum se ouve.</span></li>
           <li><b>Remover o ruído</b><span>O espaço positivo fica só com o essencial: título, informação, ação.</span></li>
@@ -331,6 +349,7 @@ footer .max{padding-block:20px;display:flex;justify-content:space-between;gap:12
       <div class="copy">
         <p class="kicker">04 · Contraste e tamanho</p>
         <h2>Se não se lê, não existe.</h2>
+        <a class="byline" href="#equipa" data-member="vicente"></a>
         <ol class="steps">
           <li class="on"><b>Contraste elevado</b><span>Texto escuro sobre fundo claro: legível em qualquer condição.</span></li>
           <li><b>O limite de 4.5:1</b><span>A WCAG 2.1 exige 4.5:1 para texto normal e 3:1 para texto grande.</span></li>
@@ -355,6 +374,7 @@ footer .max{padding-block:20px;display:flex;justify-content:space-between;gap:12
       <div class="copy">
         <p class="kicker">05 · Tipografia</p>
         <h2>A letra tem voz.</h2>
+        <a class="byline" href="#equipa" data-member="vicente"></a>
         <ol class="steps">
           <li class="on"><b>Serifada</b><span>Pequenos remates nas extremidades. Formal, tradicional, elegante. Times New Roman, Georgia, Baskerville.</span></li>
           <li><b>Não serifada</b><span>Formas limpas e modernas. Ideal para interfaces e ecrãs. Arial, Helvetica, Calibri, Roboto.</span></li>
@@ -376,6 +396,7 @@ footer .max{padding-block:20px;display:flex;justify-content:space-between;gap:12
       <div class="copy">
         <p class="kicker">06 · Hierarquia visual</p>
         <h2>Primeiro isto. Depois aquilo.</h2>
+        <a class="byline" href="#equipa" data-member="manel"></a>
         <ol class="steps">
           <li class="on"><b>Sem hierarquia</b><span>Tudo com o mesmo peso: é preciso ler tudo para encontrar o essencial.</span></li>
           <li><b>Tamanho e tipografia</b><span>O maior e mais pesado é lido primeiro.</span></li>
@@ -399,6 +420,7 @@ footer .max{padding-block:20px;display:flex;justify-content:space-between;gap:12
       <div class="copy">
         <p class="kicker">07 · Equilíbrio</p>
         <h2>Peso no sítio certo.</h2>
+        <a class="byline" href="#equipa" data-member="francisco"></a>
         <ol class="steps">
           <li class="on"><b>Simétrico</b><span>Elementos iguais espelhados no eixo. Ordem, fiabilidade, formalidade.</span></li>
           <li><b>Desequilibrado</b><span>Todo o peso de um lado: a composição cai.</span></li>
@@ -420,6 +442,7 @@ footer .max{padding-block:20px;display:flex;justify-content:space-between;gap:12
     <div class="sec-head">
       <p class="kicker">08 · Peso visual</p>
       <h2>Nem tudo pesa o mesmo.</h2>
+        <a class="byline" href="#equipa" data-member="francisco"></a>
       <p>Tamanho, cor, contraste e textura dão a cada elemento uma força diferente. Toca em cada um.</p>
     </div>
     <div class="weights" id="weights">
@@ -462,9 +485,16 @@ footer .max{padding-block:20px;display:flex;justify-content:space-between;gap:12
     <div class="sec-head">
       <p class="kicker">Equipa</p>
       <h2>As pessoas por trás.</h2>
-      <p>Cada membro criou o seu próprio avatar com o D-ID. Carrega em play para o ouvir apresentar-se e explicar o seu papel.</p>
+      <p>Cada membro ficou responsável por uma parte da plataforma e criou o seu próprio avatar com o D-ID. Escolhe alguém para o ouvir apresentar-se.</p>
     </div>
-    <div class="team" id="team"></div>
+    <div class="stage-team">
+      <div class="player" id="player">
+        <video id="tv" playsinline preload="metadata"></video>
+        <button class="play" id="tplay" aria-label="Reproduzir apresentação"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l15 8-15 8z"/></svg></span></button>
+        <div class="cap"><b id="tname"></b><span id="trole"></span></div>
+      </div>
+      <ol class="roster" id="roster"></ol>
+    </div>
   </div>
 </section>
 
@@ -476,12 +506,14 @@ footer .max{padding-block:20px;display:flex;justify-content:space-between;gap:12
 </footer>
 
 <script>
-/* ===== Editar aqui: nomes, papéis e vídeos da equipa ===== */
+/* ===== Equipa: nomes, princípios e vídeos ===== */
+const SEC={tercos:"Regra dos terços",leitura:"Esquerda ou direita",espaco:"Espaço negativo e positivo",contraste:"Contraste e tamanho",tipografia:"Tipografia",hierarquia:"Hierarquia visual",equilibrio:"Equilíbrio",peso:"Peso visual"};
 const TEAM = [
-  { name:"Nome do Membro 1", role:"Coordenação e conteúdos", text:"Estruturou a plataforma e redigiu os textos de cada princípio.", video:"videos/membro1.mp4" },
-  { name:"Nome do Membro 2", role:"Design visual", text:"Definiu a paleta, a tipografia e a composição de cada secção.", video:"videos/membro2.mp4" },
-  { name:"Nome do Membro 3", role:"Desenvolvimento web", text:"Implementou a página e as animações controladas pelo scroll.", video:"videos/membro3.mp4" },
-  { name:"Nome do Membro 4", role:"Avatares e vídeo", text:"Criou os avatares no D-ID e editou os vídeos de apresentação.", video:"videos/membro4.mp4" },
+  { key:"miguel",    name:"Miguel",    parts:["tercos","leitura"] },
+  { key:"guilherme", name:"Guilherme", parts:["espaco"] },
+  { key:"vicente",   name:"Vicente",   parts:["contraste","tipografia"] },
+  { key:"manel",     name:"Manel",     parts:["hierarquia"] },
+  { key:"francisco", name:"Francisco", parts:["equilibrio","peso"] },
 ];
 
 const $=id=>document.getElementById(id);
@@ -579,19 +611,37 @@ document.querySelectorAll('.wt').forEach(b=>{ b.setAttribute('aria-pressed','fal
 });});
 
 /* team */
-const ini=n=>n.split(' ').filter(Boolean).map(w=>w[0]).slice(0,2).join('').toUpperCase();
+const tv=$('tv'), player=$('player'), roster=$('roster');
+const partsText=m=>m.parts.map(p=>SEC[p]).join(' · ');
+let cur=0;
 TEAM.forEach((m,i)=>{
-  const el=document.createElement('article'); el.className='member';
-  el.innerHTML=`<div class="vid"><video controls playsinline preload="metadata" aria-label="Apresentação de ${m.name}" hidden></video>
-    <div class="ph"><span class="face">${ini(m.name)}</span><small>${m.video}</small>
-    <label for="vf${i}">Carregar vídeo D-ID para pré-visualizar<input type="file" accept="video/*" id="vf${i}"></label></div></div>
-    <div class="info"><span class="role">${m.role}</span><h3>${m.name}</h3><p>${m.text}</p></div>`;
-  const v=el.querySelector('video'), ph=el.querySelector('.ph');
-  v.addEventListener('loadeddata',()=>{v.hidden=false;ph.hidden=true;});
-  v.addEventListener('error',()=>{v.hidden=true;ph.hidden=false;});
-  v.src=m.video;
-  el.querySelector('input').addEventListener('change',e=>{const f=e.target.files[0]; if(f) v.src=URL.createObjectURL(f);});
-  $('team').appendChild(el);
+  const li=document.createElement('li');
+  li.innerHTML=`<button type="button" data-i="${i}"><img src="videos/${m.key}.jpg" alt="" loading="lazy">
+    <span><span class="nm">${m.name}</span><span class="pr">${m.parts.map(p=>`<a href="#${p}">${SEC[p]}</a>`).join('')}</span></span>
+    <span class="bar"><i></i></span></button>`;
+  li.querySelector('button').addEventListener('click',e=>{ if(e.target.closest('a')) return; select(i,true); });
+  roster.appendChild(li);
+});
+function select(i,play){
+  cur=i; const m=TEAM[i];
+  roster.querySelectorAll('button').forEach((b,k)=>{ b.setAttribute('aria-current',k===i); b.querySelector('.bar i').style.width='0'; });
+  tv.src=`videos/${m.key}.mp4`; tv.poster=`videos/${m.key}.jpg`;
+  tv.setAttribute('aria-label',`Apresentação de ${m.name}`);
+  $('tname').textContent=m.name; $('trole').textContent=partsText(m);
+  if(play){ tv.play().catch(()=>{}); } else { player.classList.remove('playing'); $('tplay').hidden=false; }
+}
+$('tplay').addEventListener('click',()=>tv.play().catch(()=>{}));
+tv.addEventListener('play',()=>{ player.classList.add('playing'); $('tplay').hidden=true; tv.controls=true; });
+tv.addEventListener('pause',()=>{ if(!tv.ended){ player.classList.remove('playing'); } });
+tv.addEventListener('timeupdate',()=>{ const b=roster.querySelectorAll('.bar i')[cur]; if(b&&tv.duration) b.style.width=(tv.currentTime/tv.duration*100)+'%'; });
+tv.addEventListener('ended',()=>{ if(cur<TEAM.length-1) select(cur+1,true); else { tv.controls=false; player.classList.remove('playing'); $('tplay').hidden=false; } });
+select(0,false);
+
+/* bylines */
+document.querySelectorAll('.byline').forEach(a=>{
+  const i=TEAM.findIndex(m=>m.key===a.dataset.member), m=TEAM[i];
+  a.innerHTML=`<img src="videos/${m.key}.jpg" alt="">Por ${m.name}`;
+  a.addEventListener('click',()=>{ select(i,false); });
 });
 </script>
 </body>

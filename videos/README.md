@@ -1,11 +1,11 @@
 # Vídeos dos avatares (D-ID)
 
-Coloca aqui os vídeos exportados do D-ID com estes nomes:
+Um vídeo e uma imagem de capa por membro, com o nome em minúsculas:
 
-- `membro1.mp4`
-- `membro2.mp4`
-- `membro3.mp4`
-- `membro4.mp4`
+- `miguel.mp4` / `miguel.jpg`
+- `guilherme.mp4` / `guilherme.jpg`
+- `vicente.mp4` / `vicente.jpg`
+- `manel.mp4` / `manel.jpg`
+- `francisco.mp4` / `francisco.jpg`
 
-Os nomes, papéis e caminhos editam-se na constante `TEAM` no fim do `index.html`.
-Mantém cada vídeo curto (20–30 s) e em MP4 (H.264) para carregar rápido no Netlify.
+A lista de membros e as secções de cada um estão na constante `TEAM` no fim do `index.html`.

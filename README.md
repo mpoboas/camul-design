@@ -19,7 +19,7 @@ e introduz a equipa através de avatares em vídeo criados com o **D-ID**.
 
 ```
 index.html      página única (HTML, CSS e JS sem dependências)
-videos/         vídeos D-ID da equipa (membro1.mp4 … membro4.mp4)
+videos/         vídeos D-ID da equipa e imagens de capa
 netlify.toml    configuração do deploy
 ```
 
@@ -38,4 +38,12 @@ o `netlify.toml` publica a raiz do projeto.
 
 ## Equipa
 
-Editar a constante `TEAM` no fim do `index.html` com nomes, papéis e caminhos dos vídeos.
+| Membro | Secções |
+| --- | --- |
+| Miguel | Regra dos terços, Esquerda ou direita |
+| Guilherme | Espaço negativo e positivo |
+| Vicente | Contraste e tamanho, Tipografia |
+| Manel | Hierarquia visual |
+| Francisco | Equilíbrio, Peso visual |
+
+Cada membro criou o seu próprio avatar com o D-ID.
